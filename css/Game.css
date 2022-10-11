@@ -18,7 +18,8 @@
     height: 100%;
     position: absolute;
     border-radius: 5px;
-    background-image: url('../Imagens/yamato.jpg');
+    transition: all 600ms ease;
+    
     
 }
 .front{
@@ -29,12 +30,16 @@
     
 }
 .back{
-    background-image:url('../Imagens/One\ piece\ back.jpg');
-    background-size: contain;
+    background-image:url('../Imagens/fundo\ animes.jpg');
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     backface-visibility: hidden;
 }
-.card:hover{
+.reveal-card{
     transform: rotateY(180deg);
+}
+.disabled-card{
+    filter: saturate(0);
+    opacity: 0.5;
 }
