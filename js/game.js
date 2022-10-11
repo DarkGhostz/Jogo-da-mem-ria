@@ -1,4 +1,6 @@
 const grid = document.querySelector('.grid');
+const spanPlayer = document.querySelector('.player')
+const timer = document.querySelector('.timer');
 const characters = [
    'saitama',
    'yanokoji',
@@ -17,8 +19,9 @@ let secondCard = '';
 
 const checkEndGame = () =>{
     const disabledCards = document.querySelectorAll('.disabled-card');
-    if (disabledCards.length == 20){
-        alert('Parabéns, você venceu!');
+      if (disabledCards.length == 20){
+       clearInterval(this.loop);
+       alert(`Parabéns, ${spanPlayer.innerHTML} , seu tempo foi de: ${timer.innerHTML}!`);
     }
 }
 
@@ -26,7 +29,7 @@ const checkCards = () =>{
     const firstCharacter = firstCard.getAttribute('data-character');
     const secondCharacter = secondCard.getAttribute('data-character');
 
-    if (firstCharacter== secondCharacter) {
+    if (firstCharacter == secondCharacter) {
 
         firstCard.firstChild.classList.add('disabled-card');
         secondCard.firstChild.classList.add('disabled-card');
@@ -93,5 +96,15 @@ const loadGame = () =>{
     });
     
 }
+const startTimer = () =>{
+  this.loop =  setInterval(() =>{
+        const currenTime = +timer.innerHTML;
+        timer.innerHTML = currenTime + 1;
+    }, 1000);
+}
+window.onload = ()=>{
+    spanPlayer.innerHTML = localStorage.getItem('player');;
+    startTimer();
+    loadGame();
+}
 
-loadGame();
